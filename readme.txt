@@ -1,3 +1,21 @@
+Wattsupmeters domain is no longer.
+This can be run in WSL, follow the following blog article.
+https://learn.microsoft.com/en-us/windows/wsl/connect-usb
+
+ sudo apt install linux-tools-virtual hwdata
+ sudo update-alternatives --install /usr/local/bin/usbip usbip $(ls /usr/lib/linux-tools/*/usbip | tail -n1) 20
+
+For attaching to wsl.
+usbipd wsl list
+usbipd wsl attach --busid 4-2
+usbipd wsl detach --busid 4-2
+
+Could not figure out how to update logging of the data via this app so it was done using the orginal USB file.
+
+to collect data (local time, Watts, Volts, Amps, Power-factor with a label)
+sudo ./wattsup ttyUSB0 watts volts amps power-factor -t -l
+sudo ./wattsup ttyUSB0 watts volts amps max-watts min-watts max-amps min-amps max-volts min-volts power-factor frequency va -t -l
+
 The default baud rate is 115200.
 
 This code originated from here:
